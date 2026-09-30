@@ -1,0 +1,299 @@
+/* ---------- Design tokens: @foreldrefellas faste uttrykk ---------- */
+:root {
+  --oliven: #756e38;        /* hovedfargen, hentet fra @foreldrefellas innlegg */
+  --oliven-mork: #57522a;   /* flater: kort, skjema, oppsummering */
+  --linje: #a39b62;
+  --krem: #fff8e6;          /* tekstfargen */
+  --dempet: #ded6b0;
+  --feil: #ffe08a;
+
+  --font: "Special Elite", "American Typewriter", "Courier New", monospace;
+  --bredde: 70rem;
+}
+
+/* ---------- Grunnstiler ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+[hidden] { display: none !important; }
+
+html { scroll-behavior: smooth; scroll-padding-top: 5rem; }
+
+body {
+  margin: 0;
+  background: var(--oliven);
+  color: var(--krem);
+  font-family: var(--font);
+  font-size: 1.125rem;
+  line-height: 1.6;
+}
+
+img { display: block; max-width: 100%; height: auto; }
+h1, h2, h3 { font-family: var(--font); font-weight: 400; line-height: 1.15; margin: 0; }
+p { margin: 0 0 1rem; }
+dl, dd { margin: 0; }
+ul { list-style: none; margin: 0; padding: 0; }
+a { color: inherit; }
+
+:focus-visible { outline: 3px solid var(--feil); outline-offset: 3px; }
+
+main > section, .topp, .bunn {
+  padding-inline: max(1.25rem, calc((100% - var(--bredde)) / 2));
+}
+
+/* ---------- Header ---------- */
+.topp {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem 2rem;
+  padding-block: 0.9rem;
+  background: var(--oliven);
+  border-bottom: 2px dashed var(--linje);
+}
+.logo { font-size: 1.4rem; text-decoration: none; }
+.topp ul { display: flex; gap: 1.5rem; }
+.topp nav a { text-decoration: none; border-bottom: 2px solid transparent; padding-block: 0.25rem; }
+.topp nav a:hover { border-bottom-color: var(--krem); }
+
+/* ---------- Knapper ---------- */
+.knapp {
+  display: inline-block;
+  padding: 0.7rem 1.4rem;
+  border: 2px solid var(--krem);
+  border-radius: 4px;
+  background: var(--krem);
+  color: var(--oliven-mork);
+  font-family: var(--font);
+  font-size: 1.05rem;
+  text-decoration: none;
+  cursor: pointer;
+}
+.knapp:hover { background: transparent; color: var(--krem); }
+.knapp[disabled] {
+  background: transparent;
+  color: var(--dempet);
+  border-style: dashed;
+  border-color: var(--linje);
+  cursor: not-allowed;
+}
+
+/* ---------- Hero: sentrert, som innleggene hennes ---------- */
+.hero {
+  padding-block: clamp(1.5rem, 4vw, 3rem) clamp(3rem, 9vw, 6rem);
+  text-align: center;
+}
+.hero-bilde { margin: 0 0 2rem; }
+.hero-bilde img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: 4px;
+}
+.hero-tekst { max-width: 30ch; margin: 0 auto 1.75rem; font-size: 1.35rem; }
+
+/* Skjult visuelt, men lest opp av skjermlesere (h1 står i bildet) */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+.fakta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem 3rem;
+  margin: 2rem 0;
+  padding-block: 1.25rem;
+  border-block: 2px dashed var(--linje);
+}
+dt { font-size: 0.9rem; color: var(--dempet); }
+
+/* ---------- Event-kort ---------- */
+.eventer, .booking { padding-block: clamp(2.5rem, 6vw, 5rem); }
+.eventer h2, .booking h2 {
+  font-size: clamp(1.5rem, 4.5vw, 2.5rem);
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.eventer h2:not(:first-child) { margin-top: 4rem; }
+
+.kort-liste {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 19rem), 1fr));
+  gap: 1.5rem;
+}
+.kort {
+  display: flex;
+  flex-direction: column;
+  background: var(--oliven-mork);
+  border: 2px dashed var(--linje);   /* billettkant */
+  border-radius: 4px;
+  overflow: hidden;
+}
+.kort img { aspect-ratio: 16 / 10; object-fit: cover; width: 100%; background: var(--oliven); }
+.kort-innhold { display: flex; flex-direction: column; flex: 1; padding: 1.25rem 1.25rem 1.5rem; }
+.kort h3 { font-size: 1.5rem; margin-bottom: 0.6rem; }
+.meta { display: grid; gap: 0.3rem; margin-bottom: 1rem; }
+.meta div { display: flex; gap: 0.75rem; }
+.meta dt { min-width: 3.25rem; }
+.pris { margin-top: auto; font-size: 1.5rem; }
+.pris span { font-size: 1rem; color: var(--dempet); }
+.kort .knapp { align-self: flex-start; }
+
+/* Valgt kort (klassen legges på med JavaScript senere): invertert */
+.kort.valgt { background: var(--krem); color: var(--oliven-mork); border-style: solid; border-color: var(--krem); }
+.kort.valgt dt, .kort.valgt .pris span { color: var(--oliven); }
+.kort.valgt .knapp { background: var(--oliven-mork); border-color: var(--oliven-mork); color: var(--krem); }
+
+/* ---------- Booking ---------- */
+.booking { background: var(--oliven-mork); }
+.booking-rutenett {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
+  gap: 3rem;
+  align-items: start;
+}
+
+.felt { margin-bottom: 1.5rem; }
+label { display: block; margin-bottom: 0.4rem; }
+input, select {
+  width: 100%;
+  padding: 0.75rem 0.9rem;
+  border: 2px solid var(--linje);
+  border-radius: 4px;
+  background: var(--oliven);
+  color: var(--krem);
+  font: inherit;
+}
+input:focus, select:focus { border-color: var(--krem); }
+.hjelp { margin: 0.35rem 0 0; font-size: 0.95rem; color: var(--dempet); }
+.feil { margin: 0.35rem 0 0; font-size: 0.95rem; color: var(--feil); }
+.felt.har-feil input, .felt.har-feil select { border-color: var(--feil); }
+
+/* Oppsummering */
+.oppsummering {
+  padding: 1.5rem;
+  background: var(--oliven);
+  border: 2px dashed var(--linje);
+  border-radius: 4px;
+}
+.oppsummering h3 { font-size: 1.5rem; margin-bottom: 1rem; }
+.oppsummering dl > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-block: 0.6rem;
+  border-bottom: 1px dashed var(--linje);
+}
+.oppsummering dd { text-align: right; }
+.oppsummering .total { border-bottom: 0; padding-top: 1rem; font-size: 1.5rem; }
+.oppsummering .total dt { font-size: inherit; color: inherit; }
+.tom { color: var(--dempet); margin: 0; }
+
+/* Bekreftelse */
+.bekreftelse {
+  max-width: 36rem;
+  margin-top: 2rem;
+  padding: 2rem;
+  background: var(--krem);
+  color: var(--oliven-mork);
+  border-radius: 4px;
+}
+.bekreftelse h3 { font-size: 1.75rem; margin-bottom: 1rem; }
+.bekreftelse .knapp { background: var(--oliven-mork); border-color: var(--oliven-mork); color: var(--krem); }
+.bekreftelse .knapp:hover { background: transparent; color: var(--oliven-mork); }
+
+/* ---------- Footer: signatur nederst til høyre, som på innleggene ---------- */
+.bunn {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding-block: 2.5rem;
+  font-size: 1rem;
+}
+.bunn p { margin-bottom: 0.4rem; max-width: 46ch; }
+.signatur { margin-left: auto; font-size: 1.5rem; }
+
+/* ---------- Små skjermer ---------- */
+@media (max-width: 34rem) {
+  .topp { justify-content: center; }
+  .topp ul { gap: 1.1rem; }
+  .signatur { margin-left: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+
+/* ---------- Flersidig: meny og nye sider ---------- */
+.topp ul { flex-wrap: wrap; }
+.topp nav a[aria-current="page"] { border-bottom-color: var(--krem); }
+
+.side { padding-block: clamp(2rem, 6vw, 4rem) 1rem; text-align: center; }
+.side h1 { font-size: clamp(1.75rem, 5vw, 3rem); margin-bottom: 1rem; }
+.ingress { max-width: 40ch; margin: 0 auto 1.5rem; }
+
+textarea {
+  width: 100%;
+  padding: 0.75rem 0.9rem;
+  border: 2px solid var(--linje);
+  border-radius: 4px;
+  background: var(--oliven);
+  color: var(--krem);
+  font: inherit;
+  resize: vertical;
+}
+textarea:focus { border-color: var(--krem); }
+.felt.har-feil textarea { border-color: var(--feil); }
+
+.smalt-skjema { max-width: 36rem; margin-inline: auto; }
+.booking .bekreftelse { margin-inline: auto; }
+
+/* Podcast-kort: kvadratiske omslagsbilder */
+.podcaster .kort img { aspect-ratio: 1 / 1; }
+
+/* ---------- Kollasj (Egentid) ---------- */
+.kollasj {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: clamp(9rem, 22vw, 16rem);
+  gap: 0.75rem;
+}
+.kollasj figure { margin: 0; overflow: hidden; border: 2px dashed var(--linje); border-radius: 4px; }
+.kollasj img { width: 100%; height: 100%; object-fit: cover; }
+.k4 { grid-column: 1 / 3; grid-row: 1; }
+.k3 { grid-column: 3; grid-row: 1 / 3; }
+.k1 { grid-column: 1; grid-row: 2; }
+.k2 { grid-column: 2; grid-row: 2; }
+.k4 img { object-position: 60% 30%; }
+.k3 img { object-position: 50% 20%; }
+.k1 img { object-position: 70% 30%; }
+.k2 img { object-position: 75% 40%; }
+.foto { text-align: center; margin-top: 0.75rem; }
+
+@media (max-width: 34rem) {
+  .kollasj { grid-template-columns: 1fr 1fr; }
+  .k4 { grid-column: 1 / 3; grid-row: 1; }
+  .k3 { grid-column: 1; grid-row: 2 / 4; }
+  .k1 { grid-column: 2; grid-row: 2; }
+  .k2 { grid-column: 2; grid-row: 3; }
+}
+
+.side .knapp { margin-top: 0.5rem; }
+
+/* Sitater */
+.kort blockquote { display: flex; flex-direction: column; flex: 1; margin: 0; }
+.kort blockquote p { font-size: 1.25rem; }
+.kort blockquote footer { margin-top: auto; font-size: 0.95rem; color: var(--dempet); }
+.kort.valgt blockquote footer { color: var(--oliven); }
