@@ -1,6 +1,6 @@
 // ---------- 1. DATA (variabler) ----------
 
-// Alle eventene. id-en må være lik data-id i HTML-en.
+// Alle eventene. id-en må være lik data-id i HTML-en. NB! For å spare tid fikk jeg hjelp til å hente denne informasjonen fra Kristins eksisterende side, og generere dette:  
 const events = [
   { id: "kolveireid", navn: "Kolveireid", dato: "2026-10-16", tid: "20:00", sted: "Nærøysund kulturhus, Kolveireid", pris: 349, tilgjengelig: true, bilde: "Pictures/kolvereid.png" },
   { id: "stjordal", navn: "Stjørdal", dato: "2026-10-23", tid: "20:00", sted: "Kimen kulturhus, Stjørdal", pris: 349, tilgjengelig: true, bilde: "Pictures/stjørdal.png" },
