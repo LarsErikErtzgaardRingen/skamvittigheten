@@ -2,17 +2,23 @@
 <html lang="no">
 <head>
   <meta charset="UTF-8">
+  <!-- Får siden til å passe til størrelsen på skjermen, også på mobil -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Teksten som vises i fanen i nettleseren -->
   <title>Skamvittigheten – standup med Kristin Nordvoll Mork | Bestill billetter</title>
+  <!-- Kort beskrivelse som kan vises i Google-søk -->
   <meta name="description" content="Bestill billetter til Skamvittigheten, det vanskelige andreshowet fra @foreldrefella.">
+  <!-- Henter skriften "Special Elite" fra Google Fonts. Dette er fonten Kristin bruker på Instagramkontoen sin. -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <!-- JavaScript-linking -->
   <script src="script.js" defer></script>
 </head>
 <body>
 
+  <!-- Menyen øverst, lik i alle HTML-sidefilene. Siden du er på er markert med aria-current="page". -->
   <header class="topp">
     <a href="index.html" class="logo">#skamvittigheten</a>
     <nav aria-label="Hovedmeny">
@@ -25,12 +31,15 @@
     </nav>
   </header>
 
+  <!-- Hovedinnholdet på siden -->
   <main id="top">
 
-    <!-- Informasjon om eventet -->
+    <!--  Herodel av forsiden -->
     <section class="hero" id="om">
+      <!-- Overskriften står allerede i bildet. Her ligger den som skjult tekst, slik at skjermlesere og Google finner den. Dette problemet måtte jeg google meg frem til løsningen på -->
       <h1 class="sr-only">Skamvittigheten – standup med Kristin Nordvoll Mork</h1>
       <figure class="hero-bilde">
+        <!-- Laster dette bildet først, siden det er det første man ser -->
         <img src="Pictures/Skamvittigheten-herobilde.png" width="1280" height="720" fetchpriority="high"
              alt="Kristin Mork vs Skamvittigheten. Et standupshow av @foreldrefella.">
       </figure>
@@ -39,19 +48,24 @@
         Klimaskam, skamvett og samvittighet du ikke ba om.
         Det er nok å le av.
       </p>
+      <!-- Faktaliste: hver opplysning har en liten tittel (dt) og en verdi (dd) -->
       <dl class="fakta">
         <div><dt>Sjanger</dt><dd>Standup</dd></div>
         <div><dt>Høsten 2026</dt><dd>Trøndelagsturné</dd></div>
         <div><dt>Fra januar 2027</dt><dd>Norgesturné</dd></div>
       </dl>
+      <!-- Lenken hopper nedover siden til delen med id="eventer" -->
       <a href="#eventer" class="knapp">Se datoer</a>
     </section>
 
-    <!-- Event-kort -->
+    <!-- Event-kort: ett kort for hver kveld.
+         Hvert kort har data-id (et navn), data-pris og data-dato, som JavaScript bruker. -->
     <section class="eventer" id="eventer">
       <h2>Trøndelagsturné høsten 2026</h2>
       <div class="kort-liste">
 
+        <!-- Kort: Kolveireid. Alle kortene under er bygget på samme måte:
+             bilde, navn, kort tekst, dato/tid/sted, pris og en knapp for å velge kvelden. -->
         <article class="kort" data-id="kolveireid" data-pris="349" data-dato="2026-10-16">
           <img src="Pictures/kolvereid.png" alt="Plassholderbilde for Kolveireid" width="800" height="500" loading="lazy">
           <div class="kort-innhold">
@@ -63,10 +77,12 @@
               <div><dt>Sted</dt><dd>Nærøysund kulturhus, Kolveireid</dd></div>
             </dl>
             <p class="pris">349 kr <span>per billett</span></p>
+            <!-- Når man trykker her, velger script.js denne kvelden og hopper ned til bestillingen -->
             <button type="button" class="knapp velg-knapp" data-id="kolveireid">Velg denne kvelden</button>
           </div>
         </article>
 
+        <!-- Kort: Stjørdal -->
         <article class="kort" data-id="stjordal" data-pris="349" data-dato="2026-10-23">
           <img src="Pictures/stjørdal.png" alt="Plassholderbilde for Stjørdal" width="800" height="500" loading="lazy">
           <div class="kort-innhold">
@@ -82,6 +98,7 @@
           </div>
         </article>
 
+        <!-- Kort: Verdal -->
         <article class="kort" data-id="verdal" data-pris="349" data-dato="2026-10-29">
           <img src="Pictures/verdal.png" alt="Plassholderbilde for Verdal" width="800" height="500" loading="lazy">
           <div class="kort-innhold">
@@ -97,6 +114,7 @@
           </div>
         </article>
 
+        <!-- Kort: Singsås -->
         <article class="kort" data-id="singsas" data-pris="299" data-dato="2026-11-07">
           <img src="Pictures/singsås.jpeg" alt="Plassholderbilde for Singsås" width="800" height="500" loading="lazy">
           <div class="kort-innhold">
@@ -112,6 +130,7 @@
           </div>
         </article>
 
+        <!-- Kort: Trondheim -->
         <article class="kort" data-id="trondheim" data-pris="399" data-dato="2026-11-19">
           <img src="Pictures/trondheim.png" alt="Plassholderbilde for Trondheim" width="800" height="500" loading="lazy">
           <div class="kort-innhold">
@@ -127,6 +146,7 @@
           </div>
         </article>
 
+        <!-- Kort: Levanger -->
         <article class="kort" data-id="levanger" data-pris="349" data-dato="2026-11-20">
           <img src="Pictures/levanger.png" alt="Plassholderbilde for Levanger" width="800" height="500" loading="lazy">
           <div class="kort-innhold">
@@ -144,9 +164,11 @@
 
       </div>
 
+      <!-- Neste gruppe kort: turnéen i 2027 -->
       <h2>Norgesturné 2027</h2>
       <div class="kort-liste">
 
+        <!-- Kort: Stavanger -->
         <article class="kort" data-id="stavanger" data-pris="399" data-dato="2027-01-22">
           <img src="Pictures/stavanger.png" alt="Plassholderbilde for Stavanger" width="800" height="500" loading="lazy">
           <div class="kort-innhold">
@@ -162,6 +184,7 @@
           </div>
         </article>
 
+        <!-- Kort: Orkanger. Billettene er ikke lagt ut ennå, så knappen er skrudd av (disabled) og kan ikke trykkes på. -->
         <article class="kort" data-id="orkanger" data-pris="349" data-dato="2027-01-29" data-status="kommer">
           <img src="Pictures/orkanger.png" alt="Plassholderbilde for Orkanger" width="800" height="500" loading="lazy">
           <div class="kort-innhold">
@@ -177,6 +200,7 @@
           </div>
         </article>
 
+        <!-- Kort: Kristiansand -->
         <article class="kort" data-id="kristiansand" data-pris="399" data-dato="2027-02-04">
           <img src="Pictures/kristiansand.png" alt="Plassholderbilde for Kristiansand" width="800" height="500" loading="lazy">
           <div class="kort-innhold">
@@ -192,6 +216,7 @@
           </div>
         </article>
 
+        <!-- Kort: Steinkjer -->
         <article class="kort" data-id="steinkjer" data-pris="349" data-dato="2027-03-18">
           <img src="Pictures/steinkjer.png" alt="Plassholderbilde for Steinkjer" width="800" height="500" loading="lazy">
           <div class="kort-innhold">
@@ -207,6 +232,7 @@
           </div>
         </article>
 
+        <!-- Kort: Bergen -->
         <article class="kort" data-id="bergen" data-pris="399" data-dato="2027-04-22">
           <img src="Pictures/bergen.png" alt="Plassholderbilde for Bergen" width="800" height="500" loading="lazy">
           <div class="kort-innhold">
@@ -225,13 +251,19 @@
       </div>
     </section>
 
-    <!-- Bookingseksjon -->
+    <!-- Bookingseksjon: skjemaet for å bestille billetter, med en oppsummering ved siden av -->
     <section class="booking" id="booking">
       <h2>Bestill billetter</h2>
 
+      <!-- Boksen rundt skjema og oppsummering. Den skjules av JavaScript etter bestilling, så bekreftelsen kan vises i stedet. -->
       <div class="booking-rutenett" id="booking-innhold">
 
+        <!-- Denne skrur av nettleserens egne feilmeldinger, og erstatter dem med våre egne fra script.js (Google-tips) -->
         <form id="booking-skjema" novalidate>
+
+          <!-- Hvert felt har: en ledetekst (label), selve boksen, og et tomt sted for feilmelding som fylles ut av JavaScript hvis noe er feil -->
+
+          <!-- Nedtrekksmeny for å velge kveld. Den holdes i takt med kortene: velger du i den, markeres kortet, og omvendt. -->
           <div class="felt">
             <label for="event-valg">Kveld</label>
             <select id="event-valg" name="event" required>
@@ -246,6 +278,7 @@
               </optgroup>
               <optgroup label="2027">
                 <option value="stavanger">Stavanger, 22. januar</option>
+                <!-- Orkanger kan ikke velges ennå (disabled) -->
                 <option value="orkanger" disabled>Orkanger, 29. januar (billetter kommer)</option>
                 <option value="kristiansand">Kristiansand, 4. februar</option>
                 <option value="steinkjer">Steinkjer, 18. mars</option>
@@ -255,6 +288,7 @@
             <p class="feil" id="feil-event" role="alert"></p>
           </div>
 
+          <!-- Antall billetter: et tallfelt som starter på 1 og stopper på 8 -->
           <div class="felt">
             <label for="antall">Antall billetter</label>
             <input type="number" id="antall" name="antall" min="1" max="8" value="1" required>
@@ -274,13 +308,18 @@
             <p class="feil" id="feil-epost" role="alert"></p>
           </div>
 
+          <!-- Knappen som sender inn bestillingen -->
           <button type="submit" class="knapp">Bestill billetter</button>
         </form>
 
-        <!-- Booking-oppsummering -->
+        <!-- Booking-oppsummering: viser hva du har valgt og hva det koster.
+             Boksene med id (opp-event, opp-dato osv.) fylles ut av script.js.
+             aria-live="polite" gjør at skjermlesere leser opp endringene. -->
         <aside class="oppsummering" aria-live="polite">
           <h3>Din bestilling</h3>
+          <!-- Vises til du har valgt en kveld -->
           <p class="tom" id="oppsummering-tom">Velg en kveld for å se oppsummeringen.</p>
+          <!-- Skjult til du har valgt en kveld -->
           <dl id="oppsummering-innhold" hidden>
             <div><dt>Kveld</dt><dd id="opp-event"></dd></div>
             <div><dt>Dato og tid</dt><dd id="opp-dato"></dd></div>
@@ -293,7 +332,7 @@
 
       </div>
 
-      <!-- Bekreftelse (skjult til bookingen er sendt) -->
+      <!-- Bekreftelse (skjult til bookingen er sendt). Teksten fylles inn av script.js. -->
       <div class="bekreftelse" id="bekreftelse" hidden>
         <h3>Billettene er bestilt</h3>
         <p id="bekreftelse-tekst"></p>
@@ -303,20 +342,13 @@
 
   </main>
 
+  <!-- Bunnen av siden: forklaring om at dette er et skoleprosjekt, og lenke til den ekte siden -->
   <footer class="bunn">
     <div>
       <p>Tenkt eventside laget som skoleprosjekt ved Kodehode. Ingen billetter selges, og tider og priser er oppdiktet.</p>
       <p>Ekte datoer og billetter: <a href="https://foreldrefella.no/pages/standup-show-i-vinter">foreldrefella.no</a></p>
     </div>
-    <div class="instagram-footer-info" style="margin-bottom: 15px; font-size: 14px; line-height: 1.5;">
-   <p style="margin-bottom: 10px;">
-      Denne nettsidens utforming er basert på den grafiske profilen i Instagramprofilen @Foreldrefella. 
-      Du vil kjenne igjen både fargeprofil og fontvalg.
-   </p>
-   <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Besøk Foreldrefella på Instagram (åpnes i ny fane)" style="display: inline-flex; align-items: center; color: inherit; text-decoration: none; font-weight: bold; gap: 6px;"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" fill="currentColor" style="flex-shrink: 0;"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-  </svg><span>Besøk Foreldrefella på Instagram</span></a>
-</div>
-
+    <p class="signatur">foreldrefella.no</p>
   </footer>
 
 </body>
