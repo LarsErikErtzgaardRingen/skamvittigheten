@@ -1,18 +1,28 @@
 <!DOCTYPE html>
+<!-- Siden "Book en sliten mamma": et skjema for å sende forespørsel om å booke Kristin til et show eller eventjobb.
+     Det som skjer når man fyller ut og sender skjemaet, styres av kontakt.js. -->
 <html lang="no">
 <head>
+  <!-- Gjør at norske tegn (æ, ø, å) vises riktig -->
   <meta charset="UTF-8">
+  <!-- Får siden til å passe til størrelsen på skjermen, også på mobil -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Teksten som vises i fanen i nettleseren -->
   <title>Book en sliten mamma – standup med Kristin Nordvoll Mork</title>
+  <!-- Kort beskrivelse som kan vises i Google-søk -->
   <meta name="description" content="Send en forespørsel om standup til firmafest, konferanse eller festival.">
+  <!-- Henter skriften "Special Elite" fra Google Fonts. Dette er fonten Kristin bruker på Instagram -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
+  <!-- CSS-lenking -->
   <link rel="stylesheet" href="style.css">
+  <!-- Henter inn kontakt.js, som sjekker skjemaet og viser bekreftelsen. "defer" betyr at den venter til siden er ferdig lastet. DOM manipulasjon.-->
   <script src="kontakt.js" defer></script>
 </head>
 <body>
 
+  <!-- Menyen øverst, lik på alle sidene. Siden du er på er markert med aria-current="page". -->
   <header class="topp">
     <a href="index.html" class="logo">#skamvittigheten</a>
     <nav aria-label="Hovedmeny">
@@ -25,17 +35,26 @@
     </nav>
   </header>
 
+  <!-- Hovedinnhold -->
   <main id="top">
 
+    <!-- Tittel og kort introduksjon -->
     <section class="side">
       <h1>Book en sliten mamma</h1>
       <p class="ingress">Firmafest, konferanse, festival eller privat selskap? Send en forespørsel, så tar hun kontakt.</p>
     </section>
 
+    <!-- Seksjonen med skjemaet som skal utfylles av potensielle kunder -->
     <section class="booking">
       <h2>Send forespørsel</h2>
+
+      <!-- Boksen rundt skjemaet. Den skjules av JavaScript når forespørselen er sendt, så bekreftelsen kan vises i stedet. -->
       <div id="kontakt-innhold">
+        <!-- novalidate = vi skrur av nettleserens egne feilmeldinger, og bruker våre egne fra kontakt.js -->
         <form id="kontakt-skjema" class="smalt-skjema" novalidate>
+
+          <!-- Hvert felt har: en ledetekst (label), selve boksen, og et tomt sted for feilmelding som fylles ut av JavaScript hvis noe er feil.
+               id-ene (k-firma osv.) brukes av kontakt.js til å finne igjen feltene. -->
           <div class="felt">
             <label for="k-firma">Firma eller organisasjon</label>
             <input type="text" id="k-firma" name="firma" autocomplete="organization" required>
@@ -51,6 +70,8 @@
             <input type="email" id="k-epost" name="epost" autocomplete="email" required>
             <p class="feil" id="feil-k-epost" role="alert"></p>
           </div>
+
+          <!-- Nedtrekksmeny: man velger ett av alternativene -->
           <div class="felt">
             <label for="k-type">Type arrangement</label>
             <select id="k-type" name="type" required>
@@ -63,6 +84,8 @@
             </select>
             <p class="feil" id="feil-k-type" role="alert"></p>
           </div>
+
+          <!-- Datofelt: nettleseren viser en liten kalender -->
           <div class="felt">
             <label for="k-dato">Ønsket dato</label>
             <input type="date" id="k-dato" name="dato" required>
@@ -73,11 +96,15 @@
             <input type="text" id="k-sted" name="sted" required>
             <p class="feil" id="feil-k-sted" role="alert"></p>
           </div>
+
+          <!-- Tallfelt: tillater bare tall fra 1 til 5000 -->
           <div class="felt">
             <label for="k-gjester">Antall gjester</label>
             <input type="number" id="k-gjester" name="gjester" min="1" max="5000" required>
             <p class="feil" id="feil-k-gjester" role="alert"></p>
           </div>
+
+          <!-- Større tekstboks til en lengre melding -->
           <div class="felt">
             <label for="k-melding">Melding</label>
             <textarea id="k-melding" name="melding" rows="5" required></textarea>
@@ -85,10 +112,12 @@
             <p class="feil" id="feil-k-melding" role="alert"></p>
           </div>
 
+          <!-- Knappen som sender inn skjemaet -->
           <button type="submit" class="knapp">Send forespørsel</button>
         </form>
       </div>
 
+      <!-- Bekreftelsen: skjult til forespørselen er sendt. Teksten fylles inn av kontakt.js. -->
       <div class="bekreftelse" id="kontakt-bekreftelse" hidden>
         <h3>Forespørselen er sendt</h3>
         <p id="kontakt-bekreftelse-tekst"></p>
@@ -97,19 +126,13 @@
     </section>
   </main>
 
- <footer class="bunn">
+  <!-- Bunnen av siden: forklaring om at dette er et skoleprosjekt, og lenker til den ekte siden -->
+  <footer class="bunn">
     <div>
       <p>Tenkt eventside laget som skoleprosjekt ved Kodehode. Ingen billetter selges, og tider og priser er oppdiktet.</p>
       <p>Ekte datoer og billetter: <a href="https://foreldrefella.no/pages/standup-show-i-vinter">foreldrefella.no</a></p>
+      <p>Følg <a href="https://www.instagram.com/foreldrefella/" target="_blank" rel="noopener">@foreldrefella på Instagram</a></p>
     </div>
-    <div class="instagram-footer-info" style="margin-bottom: 15px; font-size: 14px; line-height: 1.5;">
-   <p style="margin-bottom: 10px;">
-      Denne nettsidens utforming er basert på den grafiske profilen i Instagramprofilen @Foreldrefella. 
-      Du vil kjenne igjen både fargeprofil og fontvalg.
-   </p>
-   <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Besøk Foreldrefella på Instagram (åpnes i ny fane)" style="display: inline-flex; align-items: center; color: inherit; text-decoration: none; font-weight: bold; gap: 6px;"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" fill="currentColor" style="flex-shrink: 0;"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-  </svg><span>Besøk Foreldrefella på Instagram</span></a>
-</div>
     <p class="signatur">foreldrefella.no</p>
   </footer>
 
