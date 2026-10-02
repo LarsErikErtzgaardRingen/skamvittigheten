@@ -4,6 +4,7 @@
 //   1. Sjekker at alt er fylt ut riktig før skjemaet kan sendes
 //   2. Viser en feilmelding ved feltene som er feil
 //   3. Viser en takk-melding når alt er i orden
+
 // ==========================================================
 
 // ---------- 1. Finne tingene på siden ----------
